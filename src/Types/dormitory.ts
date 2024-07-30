@@ -91,6 +91,7 @@ export interface Dormitory_type {
     width: number | null;
     length: number | null;
     dormitory_typeimg: Dormitory_typeimg[];
+    dormitory_facilitate: Dormitory_facilitate;
 };
 
 export interface Dormitory_facilitate {

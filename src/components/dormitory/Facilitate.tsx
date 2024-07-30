@@ -1,0 +1,93 @@
+'use client'
+import { observer } from "mobx-react";
+import dormitoryOnlyStore from "@/stores/dormitoryOnlyStore";
+
+import { MdBookmarkBorder, MdOutlineMeetingRoom } from "react-icons/md";
+import { IoMdBookmark, IoIosFitness } from "react-icons/io";
+import { BiChat, BiCctv, BiGitCompare } from "react-icons/bi";
+import { FaFacebookSquare, FaWifi, FaSmoking, FaCarSide, FaMotorcycle } from "react-icons/fa";
+import { PiPhoneCallFill, PiDogBold, PiGenderIntersex, PiPicnicTableBold } from "react-icons/pi";
+import { FaLine } from "react-icons/fa6";
+import { GiLift, GiSecurityGate, GiKeyCard, GiWashingMachine } from "react-icons/gi";
+import { RiFingerprintFill, RiRestaurantLine, RiStore3Line } from "react-icons/ri";
+import { GrUserPolice } from "react-icons/gr";
+import { HiOutlineDocumentText, HiOutlineLocationMarker } from "react-icons/hi";
+import { AiOutlineMan, AiOutlineWoman } from "react-icons/ai";
+import { LuAirVent } from "react-icons/lu";
+import { TbFridge } from "react-icons/tb";
+
+const Facilitate = observer(() => {
+    return (
+        <section className='card shadow-md p-4 ps-8 sm:ps-4 grid grid-cols-4 md:grid-cols-8 lg:grid-cols-10 xl:grid-cols-12 gap-4 relative overflow-hidden'>
+            <span className="absolute w-40 h-56 bg-sky-400/[.05] dark:bg-sky-900/10 blur-xl -top-12 -left-14 rotate-[65deg] rounded-[1.5rem]"></span>
+            <span className="absolute w-52 h-64 bg-sky-400/10 dark:bg-sky-900/10 -top-6 -right-14 -rotate-[50deg] rounded-[1rem]"></span>
+            <span className="absolute w-[35rem] h-96 bg-blue-300/[.05] dark:bg-blue-950/10 -top-10 -right-40 -rotate-[50deg] rounded-[2rem]"></span>
+            <span className={`col-span-2 flex-y-center gap-4 text-sm
+                ${dormitoryOnlyStore.data.dormitory_state?.wifi ? '' : 'oopacity-50 grayscale'}`}>
+                <FaWifi className="text-xl text-blue-500"/> วายฟาย
+            </span>
+            <span className={`col-span-2 flex-y-center gap-4 text-sm
+                ${dormitoryOnlyStore.data.dormitory_state?.park_car ? '' : 'oopacity-50 grayscale'}`}>
+                <FaCarSide className="text-xl text-blue-500"/> ลาจอดรถยนต์
+            </span>
+            <span className={`col-span-2 flex-y-center gap-4 text-sm
+                ${dormitoryOnlyStore.data.dormitory_state?.park_motorcycle ? '' : 'oopacity-50 grayscale'}`}>
+                <FaMotorcycle className="text-xl text-blue-500"/> ลานจอดรถมอไซค์
+            </span>
+            <span className={`col-span-2 flex-y-center gap-4 text-sm
+                ${dormitoryOnlyStore.data.dormitory_state?.washing ? '' : 'oopacity-50 grayscale'}`}>
+                <GiWashingMachine className="text-xl text-blue-500"/> เครื่องซักผ้า
+            </span>
+            <span className={`col-span-2 flex-y-center gap-4 text-sm
+                ${dormitoryOnlyStore.data.dormitory_state?.restaurant ? '' : 'oopacity-50 grayscale'}`}>
+                <RiRestaurantLine className="text-xl text-blue-500"/> ร้านอาหาร
+            </span>
+            <span className={`col-span-2 flex-y-center gap-4 text-sm
+                ${dormitoryOnlyStore.data.dormitory_state?.store ? '' : 'oopacity-50 grayscale'}`}>
+                <BiCctv className="text-xl text-blue-500"/> ร้านสะดวกซื้อ
+            </span>
+            <span className={`col-span-2 flex-y-center gap-4 text-sm
+                ${dormitoryOnlyStore.data.dormitory_state?.lift ? '' : 'oopacity-50 grayscale'}`}>
+                <GiLift className="text-xl text-blue-500"/> ลิฟต์
+            </span>
+            <span className={`col-span-2 flex-y-center gap-4 text-sm
+                ${dormitoryOnlyStore.data.dormitory_state?.security_door ? '' : 'oopacity-50 grayscale'}`}>
+                <GiLift className="text-xl text-blue-500"/> ประตูรักษาปลอดภัย
+            </span>
+            <span className={`col-span-2 flex-y-center gap-4 text-sm
+                ${dormitoryOnlyStore.data.dormitory_state?.fingerprint ? '' : 'oopacity-50 grayscale'}`}>
+                <RiFingerprintFill className="text-xl text-blue-500"/> ตรวจสอบลายนิ้วมือ
+            </span>
+            <span className={`col-span-2 flex-y-center gap-4 text-sm
+                ${dormitoryOnlyStore.data.dormitory_state?.keycard ? '' : 'oopacity-50 grayscale'}`}>
+                <GiKeyCard className="text-xl text-blue-500"/> บัตรผ่านประตู
+            </span>
+            <span className={`col-span-2 flex-y-center gap-4 text-sm
+                ${dormitoryOnlyStore.data.dormitory_state?.animal ? '' : 'oopacity-50 grayscale'}`}>
+                <PiDogBold className="text-xl text-blue-500"/> เลี้ยงสัตว์ได้
+            </span>
+            <span className={`col-span-2 flex-y-center gap-4 text-sm
+                ${dormitoryOnlyStore.data.dormitory_state?.fitness ? '' : 'oopacity-50 grayscale'}`}>
+                <IoIosFitness className="text-xl text-blue-500"/> ฟิตเนส
+            </span>
+            <span className={`col-span-2 flex-y-center gap-4 text-sm
+                ${dormitoryOnlyStore.data.dormitory_state?.fingerprint ? '' : 'oopacity-50 grayscale'}`}>
+                <RiFingerprintFill className="text-xl text-blue-500"/> ตรวจสอบลายนิ้วมือ
+            </span>
+            <span className={`col-span-2 flex-y-center gap-4 text-sm
+                ${dormitoryOnlyStore.data.dormitory_state?.cctv ? '' : 'oopacity-50 grayscale'}`}>
+                <BiCctv className="text-xl text-blue-500"/> ก้องวงจรปิด
+            </span>
+            <span className={`col-span-2 flex-y-center gap-4 text-sm
+                ${dormitoryOnlyStore.data.dormitory_state?.security_guard ? '' : 'oopacity-50 grayscale'}`}>
+                <GrUserPolice className="text-xl text-blue-500"/> รปภ.
+            </span>
+            <span className={`col-span-2 flex-y-center gap-4 text-sm
+                ${dormitoryOnlyStore.data.dormitory_state?.smoke ? '' : 'oopacity-50 grayscale'}`}>
+                <FaSmoking className="text-xl text-blue-500"/> พื้นที่สูบบุหรี่
+            </span>
+        </section>
+    )
+})
+
+export default Facilitate

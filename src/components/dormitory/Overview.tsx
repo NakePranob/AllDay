@@ -71,13 +71,13 @@ const Overview = observer(() => {
                 <p className="text-sm ms-4 opacity-80">เลือกที่พักที่ตรงใจคุณ และคุมค่าที่สุด</p>
             </div>
             <div className="mt-8 grid grid-cols-12 gap-4">
-                <div className="col-span-12 md:col-span-6 lg:col-span-4 h-auto md:h-96 border-items rounded-xl relative 
+                <div className="col-span-12 md:col-span-6 lg:col-span-4 h-auto md:max-h-96 border-items rounded-xl relative 
                 overflow-hidden overflow-y-auto scrollreg p-4 
-                bg-rv-gradient dark:bg-rv-gradient-dark bg-contain bg-no-repeat bg-center-top">
+                bg-rv-gradient dark:bg-rv-gradient-dark bg-contain bg-no-repeat bg-right-top">
                     <div className="flex-y-center gap-4 z-40">
                         <div className="flex-center w-14 h-14 rounded-lg relative
-                        border-2 border-blue-300 bg-base backdrop-blur-sm">
-                            <h1 className="text-2xl font-bold text-blue-500">{dormitoryOnlyStore.data?.reviewScore}</h1>
+                        border-2 border-blue-400 bg-base backdrop-blur-sm">
+                            <h1 className="text-2xl font-bold text-blue-400">{dormitoryOnlyStore.data?.reviewScore}</h1>
                             <span className="text-xs absolute -top-2 -left-1 bg-base px-1 text-blue-400">คะแนน</span>
                         </div>
                         <div className="flex-1">
@@ -106,13 +106,13 @@ const Overview = observer(() => {
                             </section>
                         ))
                     ) : (
-                        <p>No reviews available.</p>
+                        <p className="text-center text-sm py-16 opacity-60">ไม่มีรายการรีวิว</p>
                     )}
                     </div>
                 </div>
-                <div className="col-span-12 md:col-span-6 lg:col-span-4 rounded-xl border-items p-4 h-auto md:h-96
+                <div className="col-span-12 md:col-span-6 lg:col-span-4 rounded-xl border-items p-4 h-auto md:max-h-96
                 flex flex-col overflow-y-auto scrollreg
-                bg-map-gradient dark:bg-map-gradient-dark bg-contain bg-no-repeat bg-center-top">
+                bg-map-gradient dark:bg-map-gradient-dark bg-contain bg-no-repeat bg-right-top">
                     <div className="flex-y-center justify-between">
                         <h1 className="text-xl font-medium">ที่ตั้งหอพัก</h1>
                         <Link href={dormitoryOnlyStore.data.location ? dormitoryOnlyStore.data.location : '#'} className="flex-y-center gap-1 hover:gap-2 text-blue-500 font-bold
@@ -128,7 +128,7 @@ const Overview = observer(() => {
                             {dormitoryOnlyStore.data?.address}
                         </p>
                     </Link>
-                    <h1 className="mt-4 font-medium text-xs rounded-full pt-1 w-24 bg-blue-400 flex-center text-white">
+                    <h1 className="mt-4 font-medium text-xs rounded-full pt-[.15rem] pb-[.1rem] w-24 bg-blue-400 flex-center text-white">
                         ใกล้กับสถานที่
                     </h1>
                     <ul className="flex-1 px-4 pt-4 pb-0 flex flex-col gap-3">
@@ -145,11 +145,11 @@ const Overview = observer(() => {
                                 </li>
                             ))
                         ):(
-                            <p>No reviews available.</p>
+                            <p className="text-center text-sm py-16 opacity-60">ไม่มีรายการสถานที่ใกล้เคียง</p>
                         )}
                     </ul>
                 </div>
-                <div className="col-span-12 lg:col-span-4 rounded-xl border-items h-auto lg:h-96 p-4">
+                <div className="col-span-12 lg:col-span-4 rounded-xl border-items h-auto lg:max-h-96 p-4">
                     <div className="flex-y-center justify-between">
                         <h1 className="text-xl font-medium">สิ่งอำนวยความสะดวก</h1>
                         <Link href={'/'} className="flex-y-center gap-1 hover:gap-2 text-blue-500 font-bold

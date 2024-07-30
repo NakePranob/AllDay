@@ -11,6 +11,7 @@ import Carousel from "@/components/dormitory/Carousel"
 import MenuHeader from "@/components/dormitory/MenuHeader";
 import Overview from "@/components/dormitory/Overview";
 import RoomList from "@/components/dormitory/RoomList";
+import Facilitate from "@/components/dormitory/Facilitate";
 
 // Icons
 import { FaArrowUpWideShort } from "react-icons/fa6";
@@ -39,6 +40,8 @@ async function page({ params }: { params: { id: string }}) {
                 <div className="container pt-6 xl:px-16 z-10">
                     <Carousel/>
                     <Overview/>
+                    <h1 className='text-xl font-semibold mt-6 mb-2'>สิ่งอำนวยความสะดวก</h1>
+                    <Facilitate/>
                     <h1 className='text-xl font-semibold mt-6 mb-2'>ห้องว่างที่ให้ผู้เข้าพักจองที่เปิดให้บริการ</h1>
                     <RoomList/>
                 </div>
