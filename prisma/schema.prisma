@@ -20,12 +20,21 @@ model User {
   phone     Int?
   roleId    Int         @default(1)
   sex       Boolean?    @default(true)
+  liveAt    Live_At?
   chat      Chat[]
   dormitory Dormitory[]
   favorite  Favorite[]
   reserve   Reserve[]
   review    Review[]
   role      Role        @relation(fields: [roleId], references: [id])
+}
+
+model Live_At {
+  id        Int         @id @default(autoincrement())
+  user      User        @relation(fields: [userId], references: [id])
+  userId    Int         @unique
+  dormitory Dormitory @relation(fields: [dmtId], references: [id])
+  dmtId     Int
 }
 
 model Role {
@@ -107,6 +116,7 @@ model Dormitory {
   location_distance Location_distance[]
   reserve           Reserve[]
   review            Review[]
+  liveAt            Live_At[]
 }
 
 model Location_distance {

@@ -296,22 +296,18 @@ class RegisterEntrepreneur {
                     onUploadProgress(progressEvent) {
                         if (progressEvent.progress) {
                             const percentCompleted = (progressEvent.progress)*100;
-                            console.log(percentCompleted);
-                            if (percentCompleted >= 100) {
-                                self.setProgress(0)
-                                self.setBuffer(10);
-                            } else {
-                                const diff = Math.random() * 10;
-                                const diff2 = Math.random() * 10;
-                                self.setProgress(percentCompleted + diff);
-                                self.setBuffer(percentCompleted + diff + diff2);
-                            }
+                            const diff = Math.random() * 10;
+                            const diff2 = Math.random() * 10;
+                            self.setProgress(percentCompleted + diff);
+                            self.setBuffer(percentCompleted + diff + diff2);
                         }
                     },
                     headers: {
                         'Content-Type': 'multipart/form-data',
                     }
                 });
+                this.setProgress(0)
+                this.setBuffer(10);
                 this.setAlert({
                     open: true,
                     state: 'success',

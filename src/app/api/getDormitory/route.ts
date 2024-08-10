@@ -7,7 +7,10 @@ export async function GET(req: Request, res: Response) {
     try {
         if (getType === 'get') {
             const data = await prisma.dormitory.findMany({
-                take: 6,
+                where: {
+                    occupied: false,
+                },
+                take: 7,
                 select: {
                     id: true,
                     name: true,
@@ -33,7 +36,7 @@ export async function GET(req: Request, res: Response) {
             })
         } else {
             const data = await prisma.dormitory.findMany({
-                take: 6,
+                take: 4,
                 skip: 1,
                 cursor: {
                     id: Number(lastFields),

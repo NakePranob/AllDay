@@ -25,7 +25,7 @@ const CardDormitoryList = observer((props: Props) => {
 
     return (
         <>
-            {dormitory.dormitoryList.map(data => (
+            { dormitory.dormitoryList && dormitory.dormitoryList.map(data => (
                 <section key={data.id} className={`card w-full flex ${dormitory.layoutList ? 'flex-col' : 'h-56'}
                 transition-all duration-300 ease-in-out`}>
                     <div className={`bg-slate-100 dark:bg-gray-800 overflow-hidden

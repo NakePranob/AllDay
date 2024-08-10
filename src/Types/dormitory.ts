@@ -1,3 +1,5 @@
+import { number } from "mobx-state-tree/dist/internal";
+
 export type Dormitory = {
     id: number;
     name: string;
@@ -18,8 +20,14 @@ export type Dormitory = {
     dormitory_img: Dormitory_img[];
     dormitory_type: Dormitory_type[];
     review: Review[];
+    live_at: Live_At[];
     dormitory_state: Dormitory_state;
 };
+
+export interface Live_At {
+   userId: number,
+   dmtId: number 
+}
 
 export interface Location_distance {
     id: number;

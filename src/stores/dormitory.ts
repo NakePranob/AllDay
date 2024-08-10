@@ -1,12 +1,8 @@
 import { makeAutoObservable } from "mobx";
 import axios from "axios";
-import { truncateDecimals } from "@/function/truncateDecimals";
+import { truncateDecimals } from "@/function/maths";
 import type { Dormitory } from "@/Types/dormitory"
 import { Room } from "@mui/icons-material";
-
-// function truncateDecimals(number: number): number {
-//     return Math.floor(number);
-// }
 
 class dormitory {
     dormitoryList: Dormitory[] = [];

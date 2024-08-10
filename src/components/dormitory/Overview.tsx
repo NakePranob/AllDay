@@ -1,5 +1,5 @@
 'use client'
-import { useEffect } from "react";
+import { useEffect, createRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { observer } from "mobx-react";
@@ -36,8 +36,13 @@ const Overview = observer(() => {
     function hasTypeRoom(data: any[], has: string): boolean {
         return data?.some(dormitory => dormitory.dormitory_facilitate[has]);
     }
+
+    useEffect(() => {
+        dormitoryOnlyStore.targetOverview = dormitoryOnlyStore.targetOverview || createRef<HTMLElement>();
+    }, []);
+
     return (
-        <section className="card overflow-hidden shadow-md p-4 pt-6 relative">
+        <section ref={dormitoryOnlyStore.targetOverview} className="card overflow-hidden shadow-md p-4 pt-6 relative">
             <div className="flex sm:items-center flex-col sm:flex-row justify-between">
                 <div className="max-w-[60%] sm:max-w-[50%] md:max-w-[60%]">
                     <h1 className="text-2xl font-semibold -mb-1 overflow-hidden
@@ -46,13 +51,13 @@ const Overview = observer(() => {
                     </h1>
                     <p className="opacity-70">{dormitoryOnlyStore.data?.engname}</p>
                 </div>
-                <div className="flex-y-center justify-end w-full sm:w-auto gap-4 relative mt-1">
+                <div className="flex-y-center justify-end w-full sm:w-auto gap-4 relative mt-3">
                     <div className="flex flex-col items-center sm:items-end gap-x-2">
                         <span className="text-xs opacity-70 hidden sm:block">ราคา/ห้องพัก/เดือน เริ่มต้นที่</span>
                         <h1 className="text-xl font-bold text-rose-500">THB {dormitoryOnlyStore.data?.price}</h1>
                     </div>
                     <Button variant="contained" className="text-white rounded-lg h-10
-                     absolute sm:static right-0 bottom-10">
+                     absolute sm:static right-0 bottom-8">
                         เลือกห้องพัก
                     </Button>
                 </div>
@@ -91,20 +96,24 @@ const Overview = observer(() => {
                     </div>
                     <div className="mt-4 flex flex-col gap-2">
                     {dormitoryOnlyStore.data?.review && dormitoryOnlyStore.data?.review.length > 0 ? (
-                        dormitoryOnlyStore.data?.review.slice(0, 4).map((item, i) => (
-                            <section key={i} className="border-items rounded-lg p-2 pt-1 z-50 backdrop-blur-sm">
-                                <div className="flex justify-between items-center text-sm">
-                                    <p className="font-bold">{item.user?.firstname} {item.user?.lastname}</p>
-                                    <div className="flex-center rounded-full gap-1 text-xs font-bold text-blue-500">
-                                        <FaStar />
-                                        <p className="pt-1">{item.score}</p>
-                                    </div>
-                                </div>
-                                <p className="mt-2 text-sm opacity-80">
-                                    ห้องเหมือนในรูป พนง.บริการดี ราคาไม่แพง สะอาด ชอบค่ะ
-                                </p>
-                            </section>
-                        ))
+                        dormitoryOnlyStore.data?.review.slice(0, 4).map((item, i) => {
+                            if ( item.content && item.score ) {
+                                return (
+                                    <section key={i} className="border-items rounded-lg p-2 pt-1 z-50 backdrop-blur-sm">
+                                        <div className="flex justify-between items-center text-sm">
+                                            <p className="font-bold">{item.user.firstname ? item.user.firstname : "Not Name"} {item.user?.lastname}</p>
+                                            <div className="flex-center rounded-full gap-1 text-xs font-bold text-blue-500">
+                                                <FaStar />
+                                                <p>{item.score}</p>
+                                            </div>
+                                        </div>
+                                        <p className="mt-2 text-sm opacity-80">
+                                            {item.content}
+                                        </p>
+                                    </section>
+                                )
+                            }
+                        })
                     ) : (
                         <p className="text-center text-sm py-16 opacity-60">ไม่มีรายการรีวิว</p>
                     )}

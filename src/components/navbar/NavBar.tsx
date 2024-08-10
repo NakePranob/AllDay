@@ -66,15 +66,15 @@ const NavBar = observer(() => {
                             hover:bg-blue-500/10 transition-300`}>
                                 หน้าหลัก
                             </Link>
-                            <Link href={'/5'} className={`${pathname === '/s' && 'font-bold text-blue-400'} rounded-md py-1 px-2 mt-1 
+                            <Link href={'#'} className={`${pathname === '/s' && 'font-bold text-blue-400'} rounded-md py-1 px-2 mt-1 
                             hover:bg-blue-500/10 transition-300`}>
                                 รายการโปรด
                             </Link>
-                            <Link href={'/5'} className={`${pathname === '/s' && 'font-bold text-blue-400'} rounded-md py-1 px-2 mt-1 
+                            <Link href={'#'} className={`${pathname === '/s' && 'font-bold text-blue-400'} rounded-md py-1 px-2 mt-1 
                             hover:bg-blue-500/10 transition-300`}>
                                 รายการจอง
                             </Link>
-                            <Link href={'/5'} className={`${pathname === '/s' && 'font-bold text-blue-400'} rounded-md py-1 px-2 mt-1 
+                            <Link href={'/menage'} className={`${pathname === '/s' && 'font-bold text-blue-400'} rounded-md py-1 px-2 mt-1 
                             hover:bg-blue-500/10 transition-300`}>
                                 จัดการหอพัก
                             </Link>
