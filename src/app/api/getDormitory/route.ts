@@ -14,6 +14,7 @@ export async function GET(req: Request, res: Response) {
                 select: {
                     id: true,
                     name: true,
+                    engname: true,
                     price: true,
                     occupied: true,
                     reviewScore: true,
@@ -44,6 +45,7 @@ export async function GET(req: Request, res: Response) {
                 select: {
                     id: true,
                     name: true,
+                    engname: true,
                     price: true,
                     occupied: true,
                     reviewScore: true,
@@ -100,6 +102,7 @@ export async function POST(req: Request, res: Response) {
             select: {
                 id: true,
                 name: true,
+                engname: true,
                 price: true,
                 occupied: true,
                 reviewScore: true,

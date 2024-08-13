@@ -1,10 +1,10 @@
-import { makeAutoObservable } from "mobx";
+import { makeAutoObservable, runInAction } from "mobx";
 import axios from "axios";
 import type { Dormitory } from "@/Types/dormitory"
 
 class dormitoryOnlyStore {
     data: Dormitory = {} as Dormitory;
-
+    open: boolean = false;
     targetOverview: React.RefObject<HTMLElement> | undefined;
     targetState: React.RefObject<HTMLElement> | undefined;
     targetRoom: React.RefObject<HTMLElement> | undefined;
@@ -16,6 +16,10 @@ class dormitoryOnlyStore {
 
     setData(data: Dormitory) {
         this.data = data;
+    }
+
+    setOpen(state: boolean) {
+        this.open = state;
     }
 
     scrollToOverview() {
@@ -46,6 +50,7 @@ class dormitoryOnlyStore {
         }
     }
 
+
     scrollToRoom() {
         if (this.targetRoom) {
             const element = this.targetRoom.current;
@@ -73,18 +78,34 @@ class dormitoryOnlyStore {
             }
         }
     }
+    
+    async getUserLiveAt(id: number | null | undefined)  {
+        try {
+            const result = await axios.get(`http://localhost:3000/api/liveat/${id}`)
+            return result.data
+        } catch (error) {
+            return false;
+            console.log(error);
+        }
+    }
 
     async review(e: React.FormEvent<HTMLFormElement>, id: number | null | undefined) {
         e.preventDefault();
-        const formData = new FormData(e.currentTarget);
-        const data = Object.fromEntries(formData);
         try {
             if (id) {
-                const liveAt = await axios.get(`http://localhost:3000/api/liveAt/${id}`)
-                console.log(liveAt.data.data);
-                if (liveAt.data.data.length > 0) {
-                    console.log('test');
+                const getForm = new FormData(e.currentTarget);
+                const formData = Object.fromEntries(getForm);
+                formData.dmtId = this.data.id.toString();
+                formData.userId = id.toString();
+                if (formData.rating !== '') {
+                    const result = await axios.post(`http://localhost:3000/api/dormitory/review`, formData);
+                    runInAction(() => {
+                        this.data.review.push(result.data.review);
+                        this.data.reviewScore = result.data.totalScore;
+                    });
+                    this.setOpen(false);
                 }
+
             }
 
         } catch (error) {

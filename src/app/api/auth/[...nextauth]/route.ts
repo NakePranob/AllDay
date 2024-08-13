@@ -13,23 +13,25 @@ declare module "next-auth" {
 
     interface User {
         id:     any | null
-        email:  String
-        name:   String | null | undefined
+        email:  string 
+        name:   string  | null | undefined
         image:  any | null
         roleId: any | null 
     }
 
     interface JWT {
-        name: string | null | undefined
-        image: string | null
-        roleId: string
+        id:     any | null
+        email:  string 
+        name: string  | null | undefined
+        image: string  | null
+        roleId: string 
     }
 }
 
 interface Users {
     id:     any | null
-    email:  String
-    name:   String | null | undefined
+    email:  string 
+    name:   string  | null | undefined
     image:  any | null
     roleId: any | null
 }

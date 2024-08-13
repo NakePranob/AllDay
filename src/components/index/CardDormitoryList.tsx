@@ -88,7 +88,7 @@ const CardDormitoryList = observer((props: Props) => {
                         </h1>
                         <p className='text-xs max-w-[80%] opacity-70
                         text-ellipsis overflow-hidden whitespace-nowrap'>
-                            Name Dormitory
+                            {data.engname}
                         </p>
                         <div className='flex-y-center gap-2 mt-2 text-yellow-300'>
                             <span className='flex-center w-20 rounded-full gap-2 py-1

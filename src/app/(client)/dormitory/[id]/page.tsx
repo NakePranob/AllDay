@@ -46,7 +46,7 @@ async function Page({ params }: { params: { id: string } }) {
                     <Facilitate/>
                     <h1 className='text-xl font-semibold mt-6 mb-2'>ห้องว่างที่ให้ผู้เข้าพักจองที่เปิดให้บริการ</h1>
                     <RoomList/>
-                    <Review/>
+                    <Review dormitoryId={params.id}/>
                 </div>
             </div>
         );
