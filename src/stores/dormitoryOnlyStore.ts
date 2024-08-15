@@ -1,6 +1,7 @@
 import { makeAutoObservable, runInAction } from "mobx";
 import axios from "axios";
 import type { Dormitory } from "@/Types/dormitory"
+import { AlertType } from "@/Types/alert";
 
 class dormitoryOnlyStore {
     data: Dormitory = {} as Dormitory;
@@ -9,9 +10,26 @@ class dormitoryOnlyStore {
     targetState: React.RefObject<HTMLElement> | undefined;
     targetRoom: React.RefObject<HTMLElement> | undefined;
     targetReview: React.RefObject<HTMLElement> | undefined;
+    alert: AlertType = {
+        open: false,
+        state: '',
+        text: '',
+        link: null
+    };
 
     constructor() {
         makeAutoObservable(this);
+    }
+
+    resetAlert() {
+        this.alert.open = false;
+        this.alert.state = '';
+        this.alert.text = '';
+        this.alert.link = null;
+    }
+
+    setAlert(alert: AlertType) {
+        this.alert = alert;
     }
 
     setData(data: Dormitory) {
@@ -78,6 +96,39 @@ class dormitoryOnlyStore {
             }
         }
     }
+
+    async addFavorite(dmtId: number | null | undefined, userId: number | null | undefined) {
+        try {
+            const formData = {
+                dmtId,
+                userId,
+            }
+            if (dmtId && userId) {
+                await axios.post(`http://localhost:3000/api/favorite`, formData);
+                this.setAlert({
+                    open: true,
+                    state: 'success',
+                    text: 'ทำการเพิ่มรายการโปรด',
+                    link: null
+                })
+            } else {
+                this.setAlert({
+                    open: true,
+                    state: 'warning',
+                    text: 'กรุณาเข้าสู่ระบบ',
+                    link: '/login'
+                })
+            }
+        } catch (error) {
+            this.setAlert({
+                open: true,
+                state: 'error',
+                text: 'มีบางอย่างผิดพลาด',
+                link: null
+            })
+            console.log(error);
+        }
+    }
     
     async getUserLiveAt(id: number | null | undefined)  {
         try {
@@ -104,12 +155,30 @@ class dormitoryOnlyStore {
                         this.data.reviewScore = result.data.totalScore;
                     });
                     this.setOpen(false);
+                    this.setAlert({
+                        open: true,
+                        state: 'success',
+                        text: 'รีวิวสำเร็จ',
+                        link: null
+                    });
+                } else {
+                    this.setAlert({
+                        open: true,
+                        state: 'warning',
+                        text: 'กรุณากำหนดคะแนน',
+                        link: null
+                    })
                 }
-
             }
 
         } catch (error) {
             console.log(error);
+            this.setAlert({
+                open: true,
+                state: 'error',
+                text: 'มีบางอย่างผิดพลาด',
+                link: null
+            });
         }
     }
 }

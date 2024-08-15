@@ -2,7 +2,6 @@ import { makeAutoObservable } from "mobx";
 import axios from "axios";
 import { truncateDecimals } from "@/function/maths";
 import type { Dormitory } from "@/Types/dormitory"
-import { Room } from "@mui/icons-material";
 
 class dormitory {
     dormitoryList: Dormitory[] = [];

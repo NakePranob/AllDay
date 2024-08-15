@@ -21,6 +21,7 @@ import { FaStar } from "react-icons/fa";
 // Components
 import Starscore from "@/components/Starscore";
 import TextStateReview from "@/components/TextStateReview";
+import Alert from "@/components/Alert";
 
 // Functions
 import { CountPercent, StringDatetimeToDate } from "@/function/maths";
@@ -87,7 +88,8 @@ const Review = observer(({ dormitoryId }: { dormitoryId: string }) => {
                     </form>
                 </Box>
             </Modal>
-
+            <Alert open={dormitoryOnlyStore.alert.open} state={dormitoryOnlyStore.alert.state} 
+            text={dormitoryOnlyStore.alert.text} link={dormitoryOnlyStore.alert.link} close={()=>dormitoryOnlyStore.resetAlert()}/>
             <section ref={dormitoryOnlyStore.targetReview} className="card p-4 mt-2 relative overflow-hidden">
                 <span className="absolute w-80 h-80 bg-sky-400/10 dark:bg-sky-900/10 -top-20 -left-44 rotate-[50deg] rounded-[3rem]"></span>
                 <span className="absolute w-[35rem] h-72 bg-blue-300/[.05] dark:bg-blue-950/10 -top-10 -left-40 -rotate-[30deg] rounded-[2rem]"></span>

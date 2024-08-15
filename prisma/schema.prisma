@@ -53,8 +53,10 @@ model Favorite {
 
 model Reserve {
   id        Int       @id @default(autoincrement())
+  code      String    @unique @db.VarChar(15)
   userId    Int
   dmtId     Int
+  date      String    
   dormitory Dormitory @relation(fields: [dmtId], references: [id])
   user      User      @relation(fields: [userId], references: [id])
 }

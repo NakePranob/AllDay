@@ -48,7 +48,7 @@ const Alert = ({open, state, text, link, close}: Prop) => {
                     aria-labelledby="modal-modal-title"
                     aria-describedby="modal-modal-description"
                 >
-                    <Box sx={style} className="bg-base rounded-3xl alert">
+                    <Box sx={style} className="bg-base rounded-lg alert z-999">
                         <Typography id="modal-modal-title" variant="h6" component="h2" sx={{ mb: 1 }} className='flex-center'>
                             <BsCheck2Circle className='text-6xl text-green-500'/>
                         </Typography>
@@ -74,7 +74,7 @@ const Alert = ({open, state, text, link, close}: Prop) => {
                     aria-labelledby="modal-modal-title"
                     aria-describedby="modal-modal-description"
                 >
-                    <Box sx={style} className="bg-base rounded-3xl alert">
+                    <Box sx={style} className="bg-base rounded-lg alert z-999">
                         <Typography id="modal-modal-title" variant="h6" component="h2" sx={{ mb: 1 }} className='flex-center'>
                             <IoWarningOutline className='text-6xl text-yellow-400'/>
                         </Typography>
@@ -100,7 +100,7 @@ const Alert = ({open, state, text, link, close}: Prop) => {
                     aria-labelledby="modal-modal-title"
                     aria-describedby="modal-modal-description"
                 >
-                    <Box sx={style} className="bg-base rounded-3xl alert">
+                    <Box sx={style} className="bg-base rounded-lg alert z-999">
                         <Typography id="modal-modal-title" variant="h6" component="h2" sx={{ mb: 1 }} className='flex-center'>
                             <MdErrorOutline className='text-6xl text-red-500'/>
                         </Typography>

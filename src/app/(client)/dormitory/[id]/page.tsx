@@ -14,9 +14,6 @@ import RoomList from "@/components/dormitory/RoomList";
 import Facilitate from "@/components/dormitory/Facilitate";
 import Review from "@/components/dormitory/Review";
 
-// Icons
-import { FaArrowUpWideShort } from "react-icons/fa6";
-
 // Fetch data function
 async function getData(id: string) {
     try {
@@ -41,7 +38,7 @@ async function Page({ params }: { params: { id: string } }) {
                 <MenuHeader data={data}/>
                 <div className="container pt-6 xl:px-16 z-10">
                     <Carousel/>
-                    <Overview/>
+                    <Overview dmtId={params.id}/>
                     <h1 className='text-xl font-semibold mt-6 mb-2'>สิ่งอำนวยความสะดวก</h1>
                     <Facilitate/>
                     <h1 className='text-xl font-semibold mt-6 mb-2'>ห้องว่างที่ให้ผู้เข้าพักจองที่เปิดให้บริการ</h1>
